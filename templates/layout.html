@@ -1,0 +1,27 @@
+{{define "header"}}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/style.css">
+    <title>Meteo - {{.}}</title>
+</head>
+<body>
+    <header>
+        <h2>Station Météo - HOME</h2>
+    </header>
+    <main>
+        <h1>{{.Name}}</h1>
+{{end}}
+
+{{define "footer"}}
+    </main>
+    <footer>
+        <div class="Content-footer">
+            Lien vers les API :
+            <br><a href="https://geo.api.gouv.fr/decoupage-administratif">API - geo.gouv</a>
+            <br><a href="https://open-meteo.com/en/docs">API - open.meteo</a>
+        </div>
+    </footer>
+</body>
