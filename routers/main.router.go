@@ -13,7 +13,7 @@ func MainRouter() *http.ServeMux {
 
 	mux.Handle("GET /{$}", http.RedirectHandler("/commune", http.StatusMovedPermanently))
 
-	characterRoutes(mux)
+	communeRoutes(mux)
 
 	mux.HandleFunc("/", controllers.NotFound)
 	return mux

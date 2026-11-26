@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func characterRoutes(mux *http.ServeMux) {
-	mux.HandleFunc("GET /commune", )
+func communeRoutes(mux *http.ServeMux) {
+	mux.HandleFunc("GET /commune", controllers.ListCommunes)
 	mux.HandleFunc("GET /commune/{code}", controllers.MeteoCommune)
 }

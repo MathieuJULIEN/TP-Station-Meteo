@@ -7,11 +7,23 @@ import (
 	"errors"
 	"log"
 	"net/http"
+	"strings"
 )
 
-func (tabtemp *models.Centre) MeteoCommune(w http.ResponseWriter, r *http.Request) {
-	tabtempe := tabtemp.Coordinate
-	commune, err := services.GetMeteo(tabtempe[1], tabtempe[0])
+func ListCommunes(w http.ResponseWriter, r *http.Request) {
+	search := strings.TrimSpace(r.URL.Query().Get("name"))
+	communes, err := services.
+	if err != nil {
+		renderAPIError(w, err)
+		return
+	}
+	page.Communes = communes
+	helpers.Render(w, http.StatusOK, "list", ListPage{Search : search, Communes : communes})
+}
+
+func MeteoCommune(w http.ResponseWriter, r *http.Request) {
+	
+	meteo, err := services.GetMeteo(Commune.Centre.Latitude(), Commune.Centre.Longitude())
 	if err != nil {
 		renderAPIError(w, err)
 		return

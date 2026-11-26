@@ -12,13 +12,13 @@ type Centre struct {
 	Coordinate []float64 `json:"coordinates"`
 }
 
-func (c Centre) longitude() float64 {
+func (c Centre) Longitude() float64 {
 	var lat float64
 	lat = c.Coordinate[0]
 	return lat
 }
 
-func (c Centre) latitude() float64 {
+func (c Centre) Latitude() float64 {
 	var long float64
 	long = c.Coordinate[1]
 	return long
