@@ -6,9 +6,8 @@ import (
 	"net/url"
 )
 
-var baseURL = "https://geo.api.gouv.fr"
-
-func GetCommune(name string) error {
+func GetCommunes(name string) error {
+	var baseURL = "https://geo.api.gouv.fr"
 	endpoint := "/commune"
 	if name != "" {
 		params := url.Values{}
@@ -20,8 +19,9 @@ func GetCommune(name string) error {
 	return err
 }
 
-func GetVille(code string) (models.Commune, error) {
-	var ville models.Commune
-	err := get(baseURL, fmt.Sprintf("/commune/%v?fields=code,nom,population,centre", code), &ville)
-	return ville, err
+func GetCommuneByCode(code string) (models.Commune, error) {
+	var baseURL = "https://geo.api.gouv.fr"
+	var commune models.Commune
+	err := get(baseURL, fmt.Sprintf("/commune/%v?fields=code,nom,population,centre", code), &commune)
+	return commune, err
 }
