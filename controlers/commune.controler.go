@@ -10,25 +10,29 @@ import (
 	"strings"
 )
 
+type ListPage struct {
+	Search   string
+	Communes []models.Commune
+}
+
 func ListCommunes(w http.ResponseWriter, r *http.Request) {
 	search := strings.TrimSpace(r.URL.Query().Get("name"))
-	communes, err := services.
+	communes, err := services.SearchCommune(search)
 	if err != nil {
 		renderAPIError(w, err)
 		return
 	}
-	page.Communes = communes
-	helpers.Render(w, http.StatusOK, "list", ListPage{Search : search, Communes : communes})
+	helpers.Render(w, http.StatusOK, "list", ListPage{Search: search, Communes: communes})
 }
 
 func MeteoCommune(w http.ResponseWriter, r *http.Request) {
-	
-	meteo, err := services.GetMeteo(Commune.Centre.Latitude(), Commune.Centre.Longitude())
+	commune, err := services.GetCommune(r.PathValue("code"))
+	meteo, err := services.GetMeteo(commune.Centre.Latitude(), commune.Centre.Longitude())
 	if err != nil {
 		renderAPIError(w, err)
 		return
 	}
-	helpers.Render(w, http.StatusOK, "commune", commune)
+	helpers.Render(w, http.StatusOK, "commune", meteo)
 }
 
 func NotFound(w http.ResponseWriter, r *http.Request) {

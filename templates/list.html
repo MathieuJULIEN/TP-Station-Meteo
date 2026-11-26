@@ -1,0 +1,12 @@
+{{define "list"}}
+{{template "header"}}
+<div class="content-main">
+    <ul>
+        {{range .Communes}}
+        <li><a href="/commune/{{.Code}}">{{.Name}}</a></li>
+        {{end}}
+    </ul>
+    {{end}}
+</div>
+{{template "footer"}}
+{{end}}

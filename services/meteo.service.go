@@ -12,3 +12,7 @@ func GetMeteo(lat float64, long float64) (models.Meteo, error) {
 func SearchCommune(name string) ([]models.Commune, error) {
 	return api.GetCommunes(name)
 }
+
+func GetCommune(code string) (models.Commune, error) {
+	return api.GetCommuneByCode(code)
+}
