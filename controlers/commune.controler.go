@@ -9,9 +9,9 @@ import (
 	"net/http"
 )
 
-func (tabtemp *models.Centre)MeteoCommune(w http.ResponseWriter, r *http.Request) {
+func (tabtemp *models.Centre) MeteoCommune(w http.ResponseWriter, r *http.Request) {
 	tabtempe := tabtemp.Coordinate
-	commune, err := services.GetMeteo(tabtempe[1],tabtempe[0])
+	commune, err := services.GetMeteo(tabtempe[1], tabtempe[0])
 	if err != nil {
 		renderAPIError(w, err)
 		return

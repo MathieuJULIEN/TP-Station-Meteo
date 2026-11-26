@@ -10,9 +10,12 @@
 <body>
     <header>
         <h2>Station Météo - HOME</h2>
+        <search>
+            <input type="search" placeholder="Nom de Commune .." name="search">
+            <button type="submit"><img src="/static/icons/fleche-envoi.png"></button>
+        </search>
     </header>
     <main>
-        <h1>{{.Name}}</h1>
 {{end}}
 
 {{define "footer"}}
@@ -25,3 +28,4 @@
         </div>
     </footer>
 </body>
+{{end}}
